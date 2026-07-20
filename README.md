@@ -61,6 +61,8 @@ A aplicação implementa o CRUD completo de tarefas e também inclui uma API RES
 
 ### API REST (testada no Postman)
 
+> **Dica para o avaliador:** Para facilitar a validação dos endpoints, adicionei o arquivo `postman_collection.json` na raiz deste projeto. Basta importá-lo no seu Postman para ter todas as rotas e variáveis prontas para uso.
+
 As rotas abaixo foram testadas no Postman.
 
 Base URL da API: `http://localhost:8080/api/tasks`
@@ -89,9 +91,9 @@ Base URL da API: `http://localhost:8080/api/tasks`
   - Body JSON:
     ```json
     {
-      "title": "Tarefa atualizada",
-      "description": "Atualizando dados via método PUT",
-      "status": "concluída"
+  "title": "Tarefa atualizada",
+  "description": "Atualizando dados via método PUT",
+  "status": "concluida"
     }
     ```
 
