@@ -39,8 +39,7 @@ class TaskController extends BaseController
         $data = [
             'title' => $this->request->getPost('title'),
             'description' => $this->request->getPost('description'),
-            'status' => 
-            $this->request->getPost('status')
+            'status' => $this->request->getPost('status')
         ];
 
         $model = new TaskModel();
@@ -51,7 +50,9 @@ class TaskController extends BaseController
     }
 
     public function list(): string{
-     return view( 'tasks/list');
+     $model = new TaskModel();
+     $data['tasks'] = $model->findAll();
+     return view( 'tasks/list', $data);
     }
 
 }
