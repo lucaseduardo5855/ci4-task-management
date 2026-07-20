@@ -4,7 +4,7 @@
 <div class="container mt-4 w-50">
     <h1 class="text-center display-5">Editar Tarefa</h1>
     <hr>
-    <form action="<?= base_url('update/' . $task['id']) ?>" method="post">
+   <form action="<?= site_url('update/' . ($task['id'] ?? '')) ?>" method="post">
         <div class="form-group mb-3">
             <label for="">Título</label>
             <input type="text" name="title" class="form-control border-secondary" value="<?= esc($task['title']) ?>">
@@ -12,7 +12,7 @@
 
         <div class="form-group mb-3">
             <label for="">Descrição</label>
-            <input type="text" name="description" class="form-control border-secondary" value="<?= esc($task['description']) ?>">
+            <input type="text" name="description" class="form-control border-secondary" value="<?= esc($task['description']) ?? '' ?>">
         </div>
 
         <div class="form-group mb-3">

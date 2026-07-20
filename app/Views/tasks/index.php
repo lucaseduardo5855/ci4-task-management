@@ -3,7 +3,7 @@
 
 <div class="container">
     <?php if(session()->getFlashdata('status')): ?>
-        <div class="alert alert-success mt-3" role="alert">
+       <div class="alert alert-success mt-3" id="flash-alert" role="alert">
             <?= session()->getFlashdata('status') ?>
         </div> 
     <?php endif; ?>
@@ -34,7 +34,7 @@
                 <td><?= esc($task['description']) ?></td>
                 <td><?= date('d/m/Y H:i', strtotime($task['created_at'])) ?></td>
                 <td>
-                    <?php if ($task['status'] === 'concluída'): ?>
+                    <?php if ($task['status'] === 'concluida'): ?>
                         <span class="badge bg-success">Concluída</span>
                     <?php elseif ($task['status'] === 'em_andamento'): ?>
                         <span class="badge bg-primary">Em andamento</span>
@@ -42,7 +42,7 @@
                         <span class="badge bg-warning text-dark">Pendente</span>
                     <?php endif; ?>
                 </td>
-                <td>
+<td>
                     <a href="<?= site_url('edit/' . $task['id']) ?>" class="btn btn-sm btn-secondary">Editar</a>
                     <a href="<?= site_url('delete/' . $task['id']) ?>" class="btn btn-sm btn-danger">Deletar</a>
                 </td>
@@ -50,6 +50,16 @@
         <?php endforeach; ?>
         </tbody>
     </table>
+
 </div>
 
+<script>
+    // Ocultar o alerta após 3 segundos
+    setTimeout(function() {
+        var alertElement = document.getElementById('flash-alert');
+        if (alertElement) {
+            alertElement.style.display = 'none';
+        }
+    }, 3000);
+</script>
 <?= $this->endSection() ?>
