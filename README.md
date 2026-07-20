@@ -1,69 +1,142 @@
-# CodeIgniter 4 Application Starter
+﻿# Teste de Desenvolvimento - CodeIgniter 4
 
-## What is CodeIgniter?
+## Visão geral
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Este projeto é um sistema simples de gerenciamento de tarefas feito em CodeIgniter 4.
+A aplicação implementa o CRUD completo de tarefas e também inclui uma API RESTful para testes via Postman.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Estrutura do projeto relevante
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+- `app/Controllers/TaskController.php` — controladora da interface web.
+- `app/Controllers/TaskApiController.php` — controladora da API REST.
+- `app/Models/TaskModel.php` — model de tarefas usando Query Builder do CodeIgniter.
+- `app/Views/tasks/` — views para listagem, criação e edição.
+- `app/Config/Routes.php` — rotas web e rotas da API.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## Requisitos do ambiente
 
-## Installation & updates
+- PHP 8.2 ou superior
+- MySQL ou PostgreSQL
+- Composer
+- Extensões: `intl`, `mbstring`, `json`, `mysqli` ou `pgsql` conforme banco usado
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+## Como rodar localmente
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+1. Copie o arquivo de ambiente:
+   ```bash
+   copy env .env
+   ```
+2. Ajuste os dados de conexão no `.env`:
+   ```ini
+   app.baseURL = 'http://localhost:8080/'
+   database.default.hostname = localhost
+   database.default.database = nome_do_banco
+   database.default.username = seu_usuario
+   database.default.password = sua_senha
+   database.default.DBDriver = MySQLi
+   ```
+3. Instale dependências (se necessário):
+   ```bash
+   composer install
+   ```
+4. Inicie o servidor integrado do CodeIgniter:
+   ```bash
+   php spark serve
+   ```
+5. Acesse a aplicação em:
+   ```text
+   http://localhost:8080
+   ```
 
-## Setup
+## Rotas e endpoints
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+### Web (interface)
 
-## Important Change with index.php
+- `GET /` — lista todas as tarefas.
+- `GET /create` — exibe formulário de criação.
+- `POST /store` — envia criação de tarefa.
+- `GET /edit/{id}` — exibe formulário de edição.
+- `POST /update/{id}` — envia atualização de tarefa.
+- `GET /delete/{id}` — exclui tarefa.
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+### API REST (testada no Postman)
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+As rotas abaixo foram testadas no Postman.
 
-**Please** read the user guide for a better explanation of how CI4 works!
+Base URL da API: `http://localhost:8080/api/tasks`
 
-## Repository Management
+- `GET /api/tasks`
+  - Descrição: lista todas as tarefas.
+  - Retorno: JSON com todas as tarefas.
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+- `GET /api/tasks/{id}`
+  - Descrição: busca tarefa específica.
+  - Exemplo: `GET /api/tasks/20`
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+- `POST /api/tasks`
+  - Descrição: cria uma nova tarefa.
+  - Body JSON:
+    ```json
+    {
+      "title": "Dominar POST na API",
+      "description": "Enviando dados do Postman para o CodeIgniter",
+      "status": "pendente"
+    }
+    ```
 
-## Server Requirements
+- `PUT /api/tasks/{id}`
+  - Descrição: atualiza tarefa existente.
+  - Body JSON:
+    ```json
+    {
+      "title": "Tarefa atualizada",
+      "description": "Atualizando dados via método PUT",
+      "status": "concluída"
+    }
+    ```
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+- `DELETE /api/tasks/{id}`
+  - Descrição: exclui tarefa existente.
+  - Exemplo: `DELETE /api/tasks/20`
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+## Validação e segurança
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+- Validação de dados no formulário e na API usando as regras do CodeIgniter.
+- `TaskModel` define `allowedFields` para proteger contra mass assignment.
+- A aplicação usa Query Builder/Model do CodeIgniter, reduzindo risco de SQL Injection.
+- CSRF Protection do CodeIgniter 4 está disponível e pode ser habilitada nos filtros.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+## Banco de dados
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+A tabela principal é `tasks` com esta estrutura:
+
+```sql
+CREATE TABLE tasks (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  status ENUM('pendente', 'em andamento', 'concluída') DEFAULT 'pendente',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
+## Checklist de conformidade
+
+| Requisito                       | Status | Observações                                    |
+| ------------------------------- | ------ | ---------------------------------------------- |
+| Framework: CodeIgniter 4        | ✅     | Usado em todo o projeto                        |
+| Banco de dados MySQL/PostgreSQL | ✅     | Suporta MySQL via MySQLi                       |
+| ORM/Query Builder               | ✅     | `TaskModel` estende `Model` do CI4             |
+| Validação do CodeIgniter        | ✅     | Aplicada em formulários e API                  |
+| Interface simples               | ✅     | Views em `app/Views/tasks/`                    |
+| Segurança CSRF                  | ✅     | Proteção do CI4 disponível em filtros          |
+| Rotas amigáveis                 | ✅     | Web e API definidas em `app/Config/Routes.php` |
+| API REST (bônus)                | ✅     | `TaskApiController` implementa CRUD JSON       |
+
+## Observações para o avaliador
+
+- A API REST responde em JSON nas rotas `/api/tasks`.
+- O controlador `TaskApiController` usa retornos padronizados do `ResourceController`.
+- A arquitetura segue MVC e uso recomendado do CodeIgniter.
+- Todos os endpoints foram testados via Postman.
