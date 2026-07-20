@@ -1,0 +1,37 @@
+<?php $this->extend('layouts/default'); ?>
+<?php $this->section('content'); ?>
+
+<div class="container mt-3 w-50">
+    <h1>Cadastrar Tarefa</h1>
+    <hr>
+    <form action="" method="post"></form>
+
+    <form action="">
+        <div class="form-group mb-3">
+            <label for="">Título</label>
+            <input type="text" name="title" class="form-control border-secondary">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="">Descrição</label>
+            <input type="text" name="description" class="form-control border-secondary">
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Status</label>
+            <select name="status" class="form-control border-secondary">
+                <option value="pendente">Pendente</option>
+                <option value="em_andamento">Em Andamento</option>
+                <option value="concluida">Concluída</option>
+            </select>
+        </div>
+
+
+       
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary w-50">Registrar</button>
+        </div>
+    </form>
+</div>
+
+<?php $this->endSection(); ?>
