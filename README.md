@@ -22,6 +22,8 @@ A aplicação implementa o CRUD completo de tarefas e também inclui uma API RES
 
 ## Como rodar localmente
 
+> **Importante:** antes de executar os comandos abaixo, certifique-se de que você tem um servidor local em execução (por exemplo XAMPP, Laragon ou WAMP) com **Apache** e **MySQL** iniciados.
+
 1. Copie o arquivo de ambiente:
    ```bash
    copy env .env
