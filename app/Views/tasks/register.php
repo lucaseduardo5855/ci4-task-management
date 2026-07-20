@@ -1,12 +1,10 @@
 <?php $this->extend('layouts/default'); ?>
 <?php $this->section('content'); ?>
 
-<div class="container mt-3 w-50">
-    <h1>Cadastrar Tarefa</h1>
+<div class="container mt-4 w-50">
+    <h1 class="text-center">Cadastrar Tarefa</h1>
     <hr>
-    <form action="" method="post"></form>
-
-    <form action="">
+    <form action="<?= base_url('register') ?>" method="post">
         <div class="form-group mb-3">
             <label for="">Título</label>
             <input type="text" name="title" class="form-control border-secondary">
@@ -32,6 +30,12 @@
             <button type="submit" class="btn btn-primary w-50">Registrar</button>
         </div>
     </form>
+
+    <?php if(isset($validation)): ?>
+        <div class="alert alert-danger mt-3" role="alert">
+            <?= $validation->listErrors() ?>
+        </div>
+    <?php endif; ?>
 </div>
 
 <?php $this->endSection(); ?>
