@@ -1,10 +1,12 @@
 <?php $this->extend('layouts/default'); ?>
 <?php $this->section('content'); ?>
 
-<div class="container mt-4 w-50">
-    <h1 class="text-center display-5">Editar Tarefa</h1>
-    <hr>
-   <form action="<?= site_url('update/' . ($task['id'] ?? '')) ?>" method="post">
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <h1 class="text-center display-5">Editar Tarefa</h1>
+            <hr>
+           <form action="<?= site_url('update/' . ($task['id'] ?? '')) ?>" method="post">
     <?= csrf_field() ?>
         <div class="form-group mb-3">
             <label for="">Título</label>
@@ -26,7 +28,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary w-50">Salvar Alterações</button>
+            <button type="submit" class="btn btn-primary w-100 w-md-50">Salvar Alterações</button>
         </div>
     </form>
 
@@ -35,6 +37,8 @@
             <?= $validation->listErrors() ?>
         </div>
     <?php endif; ?>
+        </div>
+    </div>
 </div>
 
 <?php $this->endSection(); ?>

@@ -10,19 +10,22 @@
 </div>
 
 <div class="container mt-5">
-    <h1 class="display-5 mb-3 text-center">Listagem de Tarefas</h1>
-    <a href="<?= site_url('create') ?>" class="btn btn-success float-end mb-3">Nova Tarefa</a>
-    <table class="table table-sm table-hover mt-4">
-        <thead> 
-            <tr>
-                <th>#</th>
-                <th>Título</th>
-                <th>Descrição</th>
-                <th>Data</th>
-                <th>Status</th>
-                <th class="text-center" style="width: 150px;">Ações</th>
-            </tr>
-        </thead>
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mb-3 gap-3">
+        <h1 class="display-5 mb-0 text-center text-md-start">Listagem de Tarefas</h1>
+        <a href="<?= site_url('create') ?>" class="btn btn-success">Nova Tarefa</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-sm table-hover mt-4">
+            <thead> 
+                <tr>
+                    <th>#</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th class="text-center" style="width: 150px;">Ações</th>
+                </tr>
+            </thead>
         <tbody>
         <?php 
         $i = 1; 

@@ -10,9 +10,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2B3035">
     <div class="container">
         <a class="navbar-brand" href="<?= site_url('/') ?>">Gerenciador de Tarefas</a>
-        <div class="navbar-nav">
-            <a class="nav-link" href="<?= site_url('/') ?>">Listagem</a>
-            <a class="nav-link" href="<?= site_url('create') ?>">Nova Tarefa</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="<?= site_url('/') ?>">Listagem</a>
+                <a class="nav-link" href="<?= site_url('create') ?>">Nova Tarefa</a>
+            </div>
         </div>
     </div>
 </nav>
