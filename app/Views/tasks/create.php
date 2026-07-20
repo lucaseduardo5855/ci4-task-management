@@ -5,6 +5,7 @@
     <h1 class="text-center display-5">Cadastrar Tarefa</h1>
     <hr>
     <form action="<?= base_url('store') ?>" method="post">
+        <?= csrf_field() ?>
         <div class="form-group mb-3">
             <label for="">Título</label>
             <input type="text" name="title" class="form-control border-secondary">

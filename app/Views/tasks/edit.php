@@ -5,6 +5,7 @@
     <h1 class="text-center display-5">Editar Tarefa</h1>
     <hr>
    <form action="<?= site_url('update/' . ($task['id'] ?? '')) ?>" method="post">
+    <?= csrf_field() ?>
         <div class="form-group mb-3">
             <label for="">Título</label>
             <input type="text" name="title" class="form-control border-secondary" value="<?= esc($task['title']) ?>">
