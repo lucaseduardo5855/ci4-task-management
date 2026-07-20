@@ -61,7 +61,14 @@ A aplicação implementa o CRUD completo de tarefas e também inclui uma API RES
 
 ### API REST (testada no Postman)
 
-> **Dica para o avaliador:** Para facilitar a validação dos endpoints, adicionei o arquivo `postman_collection.json` na raiz deste projeto. Basta importá-lo no seu Postman para ter todas as rotas e variáveis prontas para uso.
+> **Dica para o avaliador:** Para facilitar a validação dos endpoints, adicionei o arquivo `postman_collection.json` na raiz deste projeto.
+>
+> Importar no Postman:
+>
+> 1. Abra o Postman.
+> 2. Clique em `Import`.
+> 3. Selecione o arquivo `postman_collection.json`.
+> 4. Execute as requisições da coleção.
 
 As rotas abaixo foram testadas no Postman.
 
@@ -73,7 +80,7 @@ Base URL da API: `http://localhost:8080/api/tasks`
 
 - `GET /api/tasks/{id}`
   - Descrição: busca tarefa específica.
-  - Exemplo: `GET /api/tasks/20`
+  - Exemplo: `GET /api/tasks/29`
 
 - `POST /api/tasks`
   - Descrição: cria uma nova tarefa.
@@ -91,15 +98,15 @@ Base URL da API: `http://localhost:8080/api/tasks`
   - Body JSON:
     ```json
     {
-  "title": "Tarefa atualizada",
-  "description": "Atualizando dados via método PUT",
-  "status": "concluida"
+      "title": "Tarefa atualizada",
+      "description": "Atualizando dados via método PUT",
+      "status": "concluida"
     }
     ```
 
 - `DELETE /api/tasks/{id}`
   - Descrição: exclui tarefa existente.
-  - Exemplo: `DELETE /api/tasks/20`
+  - Exemplo: `DELETE /api/tasks/29`
 
 ## Validação e segurança
 
@@ -142,3 +149,4 @@ CREATE TABLE tasks (
 - O controlador `TaskApiController` usa retornos padronizados do `ResourceController`.
 - A arquitetura segue MVC e uso recomendado do CodeIgniter.
 - Todos os endpoints foram testados via Postman.
+- A coleção do Postman está incluída no arquivo `postman_collection.json` na raiz do projeto.

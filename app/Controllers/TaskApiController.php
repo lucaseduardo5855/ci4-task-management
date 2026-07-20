@@ -83,8 +83,8 @@ class TaskApiController extends ResourceController
         $data = $this->request->getJSON(true) ?? [];
 
         if (!$this->validateTaskData($data)) {
-            return $this->failedValidationErrors($this->validator->getErrors());
-        }
+return $this->failValidationErrors($this->validator->getErrors());       
+ }
 
         if ($model->update($id, $data)) {
             return $this->respond([
@@ -94,7 +94,7 @@ class TaskApiController extends ResourceController
             ]);
         }
 
-        return $this->failedValidationErrors($model->errors());
+        return $this->failValidationErrors($model->errors());
     }
 
     /**

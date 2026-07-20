@@ -20,7 +20,7 @@
                 <th>Descrição</th>
                 <th>Data</th>
                 <th>Status</th>
-                <th>Ações</th>
+                <th class="text-center" style="width: 150px;">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -42,10 +42,10 @@
                         <span class="badge bg-warning text-dark">Pendente</span>
                     <?php endif; ?>
                 </td>
-<td>
-                    <a href="<?= site_url('edit/' . $task['id']) ?>" class="btn btn-sm btn-secondary">Editar</a>
-                    <a href="<?= site_url('delete/' . $task['id']) ?>" class="btn btn-sm btn-danger">Deletar</a>
-                </td>
+<td class="text-center">
+    <a href="<?= site_url('edit/' . $task['id']) ?>" class="btn btn-sm btn-secondary">Editar</a>
+    <a href="<?= site_url('delete/' . $task['id']) ?>" class="btn btn-sm btn-danger">Deletar</a>
+</td>
             </tr>
         <?php endforeach; ?>
         </tbody>
