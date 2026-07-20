@@ -10,7 +10,8 @@
 </div>
 
 <div class="container mt-5">
-    <h1 class="display mb-3 text-center">Listagem de Tarefas</h1>
+    <h1 class="display-5 mb-3 text-center">Listagem de Tarefas</h1>
+    <a href="<?= site_url('register') ?>" class="btn btn-success float-end mb-3">Nova Tarefa</a>
     <table class="table table-sm table-hover mt-4">
         <thead> 
             <tr>
