@@ -9,10 +9,10 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2B3035">
     <div class="container">
-        <a class="navbar-brand" href="<?= site_url('list') ?>">Gerenciador de Tarefas</a>
+        <a class="navbar-brand" href="<?= site_url('/') ?>">Gerenciador de Tarefas</a>
         <div class="navbar-nav">
-            <a class="nav-link" href="<?= site_url('list') ?>">Listagem</a>
-            <a class="nav-link" href="<?= site_url('register') ?>">Nova Tarefa</a>
+            <a class="nav-link" href="<?= site_url('/') ?>">Listagem</a>
+            <a class="nav-link" href="<?= site_url('create') ?>">Nova Tarefa</a>
         </div>
     </div>
 </nav>

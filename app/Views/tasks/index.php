@@ -11,7 +11,7 @@
 
 <div class="container mt-5">
     <h1 class="display-5 mb-3 text-center">Listagem de Tarefas</h1>
-    <a href="<?= site_url('register') ?>" class="btn btn-success float-end mb-3">Nova Tarefa</a>
+    <a href="<?= site_url('create') ?>" class="btn btn-success float-end mb-3">Nova Tarefa</a>
     <table class="table table-sm table-hover mt-4">
         <thead> 
             <tr>
@@ -43,8 +43,8 @@
                     <?php endif; ?>
                 </td>
                 <td>
-                    <a href="" class="btn btn-sm btn-secondary">Editar</a>
-                    <a href="" class="btn btn-sm btn-danger">Deletar</a>
+                    <a href="<?= site_url('edit/' . $task['id']) ?>" class="btn btn-sm btn-secondary">Editar</a>
+                    <a href="<?= site_url('delete/' . $task['id']) ?>" class="btn btn-sm btn-danger">Deletar</a>
                 </td>
             </tr>
         <?php endforeach; ?>

@@ -3,10 +3,12 @@
 use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
-$routes->get('/', 'Home::index');
 
+//CRUD Tasks
+$routes->get('/', 'TaskController::index');
+$routes->get('/create', 'TaskController::create');
+$routes->post('/store', 'TaskController::store');
+$routes->get('/edit/(:num)', 'TaskController::edit/$1');
+$routes->post('/update/(:num)', 'TaskController::update/$1');
+$routes->get('/delete/(:num)', 'TaskController::delete/$1');
 
-//CRUD
-$routes->get('/register', 'TaskController::register');
-$routes->post('/register', 'TaskController::doRegister');
-$routes->get('/list', 'TaskController::list');
