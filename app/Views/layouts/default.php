@@ -14,10 +14,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarMain">
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="<?= site_url('/') ?>">Listagem</a>
-                <a class="nav-link" href="<?= site_url('create') ?>">Nova Tarefa</a>
-            </div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= site_url('/') ?>">Listagem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= site_url('create') ?>">Nova Tarefa</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
